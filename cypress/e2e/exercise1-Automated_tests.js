@@ -61,20 +61,11 @@ describe("IMDb Tests", () => {
     cy.screenshot();
   });
 
-  it.only("Celebrities born today but 40 years ago", () => {
+  it("Celebrities born today but 40 years ago", () => {
     const date = utilities.getDate40YearsAgo();
     utilities.acceptConsentBanner();
     utilities.navigateToCelebritiesBornOnDate();
     cy.wait(2000);
     utilities.setBirthDate(date);
-
-    // I stablished values invoking attribute and setting dates there, but "See results" button doesn't activate
-    // so I couldn't click on it
-    // I've tried different approaches, but didn't find a way to inspect elements within calendar as it closes
-    // anytime you try to make right click on them
-    // In case it worked, next steps would be like this:
-    // cy.get('[data-testid="adv-search-get-results"]').invoke('attr', 'aria-disabled', 'false').click({ force: true });
-    // cy.get('[data-testid="nlib-title"]').first().click()
-    // cy.screenshot()
   });
 });
